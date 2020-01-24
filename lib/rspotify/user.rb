@@ -158,10 +158,13 @@ module RSpotify
       return response if RSpotify.raw_response
 
       json = RSpotify.raw_response ? JSON.parse(response) : response
+      @cursors = json['cursors']
+
       json['items'].map do |t|
         data = t['track']
         data['played_at'] = t['played_at']
         data['context_type'] = t['context']['type'] if t['context']
+        data['context_uri'] = t['context']['uri'] if t['context']
         Track.new data
       end
     end
