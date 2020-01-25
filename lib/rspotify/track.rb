@@ -13,6 +13,7 @@ module RSpotify
   # @attr [Integer]       track_number      The number of the track. If an album has several discs, the track number is the number on the specified disc
   # @attr [String]        played_at         The date and time the track was played. Only present when pulled from /recently-played
   # @attr [String]        context_type      The context the track was played from. Only present when pulled from /recently-played
+  # @attr [String]        context_uri       The context uri the track was played from. Only present when pulled from /recently-played
   # @attr [Boolean]       is_playable       Whether or not the track is playable in the given market. Only present when track relinking is applied by specifying a market when looking up the track
   # @attr [TrackLink]     linked_from       Details of the requested track. Only present when track relinking is applied and the returned track is different to the one requested because the latter is not available in the given market
   class Track < Base
@@ -72,6 +73,7 @@ module RSpotify
       @track_number      = options['track_number']
       @played_at         = options['played_at']
       @context_type      = options['context_type']
+      @context_uri       = options['context_uri']
       @is_playable       = options['is_playable']
 
       @album = if options['album']
