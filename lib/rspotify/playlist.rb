@@ -315,7 +315,7 @@ module RSpotify
 
       params = {
         method: :delete,
-        url: CGI.escape(RSpotify::API_URI + @path + '/tracks'),
+        url: RSpotify::API_URI + @path + '/tracks',
         headers: User.send(:oauth_header, @owner.id),
         payload: positions ? { positions: positions } : { tracks: tracks }
       }
